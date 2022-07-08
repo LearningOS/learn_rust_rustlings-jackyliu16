@@ -20,11 +20,11 @@ enum ParsePosNonzeroError {
 
 impl ParsePosNonzeroError {
     // add another error conversion function here.
-    fn from_creation(err: CreationError) -> ParsePosNonzeroError {          // create a kind of implementation of err map 
-        ParsePosNonzeroError::Creation(err)
-    }
     fn from_parse_int(err: ParseIntError) -> ParsePosNonzeroError {
         ParsePosNonzeroError::ParseInt(err)
+    }
+    fn from_creation(err: CreationError) -> ParsePosNonzeroError {          // create a kind of implementation of err map 
+        ParsePosNonzeroError::Creation(err)
     }
 }
 
