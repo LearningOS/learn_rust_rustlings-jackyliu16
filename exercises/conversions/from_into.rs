@@ -48,7 +48,7 @@ impl From<&str> for Person {
         //         if name.len() > 0 {
         //             return Person {
         //                 name:String::from(name),
-        //                 age: age.parse::<usize>().unwrap(),
+        //                 age: age as usize,
         //             }
         //         }
         //     }
