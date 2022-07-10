@@ -5,23 +5,27 @@
 // construct to `Option` that can be used to express error conditions. Let's use it!
 // Execute `rustlings hint errors1` for hints!
 
-// I AM NOT DONE
-
-pub fn generate_nametag_text(name: String) -> Option<String> {
+// create a kind of option by enum.Result<OK, Err>
+pub fn generate_nametag_text(name: String) -> Result<String, String> {
+    // use tests::{generates_nametag_text_for_a_nonempty_name, explains_why_generating_nametag_text_fails};
     if name.len() > 0 {
-        Some(format!("Hi! My name is {}", name))
+        // Some(format!("Hi! My name is {}", name))
+        Ok(format!("Hi! My name is {}", name))
+        // generates_nametag_text_for_a_nonempty_name();
     } else {
         // Empty names aren't allowed.
-        None
+        Err("`name` was empty; it must be nonempty.".to_string())
+        // None
+        // explains_why_generating_nametag_text_fails();
     }
 }
 
 #[cfg(test)]
-mod tests {
+pub mod tests {
     use super::*;
 
     #[test]
-    fn generates_nametag_text_for_a_nonempty_name() {
+    pub fn generates_nametag_text_for_a_nonempty_name() {
         assert_eq!(
             generate_nametag_text("Beyoncé".into()),
             Ok("Hi! My name is Beyoncé".into())
@@ -29,7 +33,7 @@ mod tests {
     }
 
     #[test]
-    fn explains_why_generating_nametag_text_fails() {
+    pub fn explains_why_generating_nametag_text_fails() {
         assert_eq!(
             generate_nametag_text("".into()),
             // Don't change this line

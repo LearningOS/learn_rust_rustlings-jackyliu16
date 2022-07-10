@@ -1,8 +1,32 @@
 // iterators4.rs
 
-// I AM NOT DONE
 
 pub fn factorial(num: u64) -> u64 {
+    /* additional variables + unrecursion + for */
+    // let mut a: u64 = 1;
+    // for i in 1..=num {
+    //     a *= i; 
+    // }
+    // a
+
+    /* return and factorial */
+    // if num == 1 {return 1;};
+    // num * factorial(num-1)
+
+    /* fatorial */
+    // if num != 1 {
+    //     num * factorial(num-1)
+    // } else {
+    //     num 
+    // }
+
+    // std::iter::Iterator::fold
+    // (1..num+1).fold(1, |sum, v| sum * v)
+
+    // std::iter::Iterator::reduce
+    (1..=num).reduce(|sum, v| sum * v).unwrap()
+
+
     // Complete this function to return the factorial of num
     // Do not use:
     // - return

@@ -1,10 +1,12 @@
 // enums3.rs
 // Address all the TODOs to make the tests pass!
 
-// I AM NOT DONE
 
 enum Message {
-    // TODO: implement the message variant types based on their usage below
+    ChangeColor((u8,u8,u8)),
+    Echo(String),
+    Move(Point),
+    Quit
 }
 
 struct Point {
@@ -19,6 +21,7 @@ struct State {
 }
 
 impl State {
+    // 这个地方所提供的部分其实相当于某种程度上的参照，两种东西起到了一个类似的作用
     fn change_color(&mut self, color: (u8, u8, u8)) {
         self.color = color;
     }
@@ -36,7 +39,14 @@ impl State {
     }
 
     fn process(&mut self, message: Message) {
-        // TODO: create a match expression to process the different message variants
+        match message {
+            // 对于这个部分而言，左边的部分相当于输入的成分，类似于其他语言中存在的enum的操作
+            // Message枚举主要起到了对于传入参数进行分流的作用
+            Message::ChangeColor(c) => self.color = c,
+            Message::Echo(e) => println!("{}", e),
+            Message::Move(p) => self.position = p,
+            Message::Quit => self.quit = true
+        }
     }
 }
 
